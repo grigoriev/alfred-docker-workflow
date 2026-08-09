@@ -1,0 +1,6 @@
+Docker.alfredworkflow
+src/update.sh
+src/autoupdate.sh
+coverage/
+sonar-coverage.xml
+.idea/

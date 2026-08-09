@@ -1,0 +1,6 @@
+#!/bin/bash
+# Consume the piped AppleScript, log argv, and emit a fake iTerm session id so
+# run_iterm_cmd can exercise session storage.
+cat >/dev/null 2>&1
+echo "$@" >> "${OSASCRIPT_LOG:-/dev/null}"
+echo "MOCKSESSION"

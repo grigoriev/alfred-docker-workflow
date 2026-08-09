@@ -1,0 +1,21 @@
+#!/bin/bash
+# Mock docker for tests. Logs argv to $DOCKER_LOG. DOCKER_DOWN=1 fails ps/info
+# to simulate a stopped daemon. DOCKER_PS_FIXTURE overrides the container set.
+echo "$@" >> "${DOCKER_LOG:-/dev/null}"
+case "$1" in
+  ps)
+    [[ "$DOCKER_DOWN" == "1" ]] && exit 1
+    if [[ -n "$DOCKER_PS_FIXTURE" && -f "$DOCKER_PS_FIXTURE" ]]; then
+      cat "$DOCKER_PS_FIXTURE"
+    else
+      cat <<'JSON'
+{"ID":"aaaa111","Names":"web","Image":"nginx:latest","State":"running","Status":"Up 3 minutes","Ports":"0.0.0.0:8080->80/tcp, :::8080->80/tcp"}
+{"ID":"bbbb222","Names":"db","Image":"postgres:16","State":"exited","Status":"Exited (0) 2 hours ago","Ports":""}
+JSON
+    fi
+    ;;
+  inspect) echo '[{"Id":"aaaa111","State":{"Status":"running"}}]' ;;
+  info) [[ "$DOCKER_DOWN" == "1" ]] && exit 1; echo "ok" ;;
+  *) : ;;
+esac
+exit 0

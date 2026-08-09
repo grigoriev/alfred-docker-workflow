@@ -1,6 +1,6 @@
 WORKFLOW    := Docker.alfredworkflow
 UPDATER_URL := https://github.com/grigoriev/alfred-workflow-updater/releases/latest/download/updater.tar.gz
-SCRIPTS     := src/docker.sh src/containers.sh src/cache.sh src/globals.sh
+SCRIPTS     := src/docker.sh src/containers.sh src/images.sh src/cache.sh src/globals.sh
 EXCLUDES    := '.git/*' '.github/*' '.gitignore' 'Makefile' '$(WORKFLOW)'
 
 .PHONY: all build updater verify-updater test lint icons clean

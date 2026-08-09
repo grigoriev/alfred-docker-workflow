@@ -14,6 +14,18 @@ case "$1" in
 JSON
     fi
     ;;
+  images)
+    [[ "$DOCKER_DOWN" == "1" ]] && exit 1
+    if [[ -n "$DOCKER_IMAGES_FIXTURE" && -f "$DOCKER_IMAGES_FIXTURE" ]]; then
+      cat "$DOCKER_IMAGES_FIXTURE"
+    else
+      cat <<'JSON'
+{"ID":"img111","Repository":"nginx","Tag":"latest","Size":"142MB","CreatedSince":"2 weeks ago"}
+{"ID":"img222","Repository":"postgres","Tag":"16","Size":"430MB","CreatedSince":"3 days ago"}
+{"ID":"img333","Repository":"<none>","Tag":"<none>","Size":"88MB","CreatedSince":"5 minutes ago"}
+JSON
+    fi
+    ;;
   inspect) echo '[{"Id":"aaaa111","State":{"Status":"running"}}]' ;;
   info) [[ "$DOCKER_DOWN" == "1" ]] && exit 1; echo "ok" ;;
   *) : ;;

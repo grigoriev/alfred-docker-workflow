@@ -3,6 +3,7 @@
 # Icon paths, generated from Octicons by "make icons". See .github/build-icons.sh.
 ICON_RUNNING="icons/running.png"
 ICON_STOPPED="icons/stopped.png"
+ICON_IMAGE="icons/image.png"
 ICON_TERMINAL="icons/terminal.png"
 ICON_LOGS="icons/logs.png"
 ICON_RESTART="icons/restart.png"

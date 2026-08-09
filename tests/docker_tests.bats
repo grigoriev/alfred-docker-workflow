@@ -15,9 +15,14 @@ setup() {
 
 # --- list mode -------------------------------------------------------------
 
-@test "docker.sh: lists containers, running first" {
+@test "docker.sh: lists containers, running first, then the images switch" {
   run bash -c '. src/docker.sh list ""'
-  echo "$output" | jq -e '[.items[].title] == ["web", "db"]' >/dev/null
+  echo "$output" | jq -e '[.items[].title] == ["web", "db", "Images →"]' >/dev/null
+}
+
+@test "docker.sh: the images switch is last and routes to images" {
+  run bash -c '. src/docker.sh list ""'
+  echo "$output" | jq -e '.items[-1].title == "Images →" and .items[-1].arg == "view-images"' >/dev/null
 }
 
 @test "docker.sh: subtitle carries image, status and ports" {
@@ -27,7 +32,7 @@ setup() {
 
 @test "docker.sh: filters by a word across name, image and status" {
   run bash -c '. src/docker.sh list "postgres"'
-  echo "$output" | jq -e '[.items[].title] == ["db"]' >/dev/null
+  echo "$output" | jq -e '[.items[].title] == ["db", "Images →"]' >/dev/null
 }
 
 @test "docker.sh: a container drills into its menu and offers stop/logs mods" {

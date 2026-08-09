@@ -21,10 +21,14 @@
 mode="$1"
 query="$2"
 
-# Reopen Alfred on a query so the list refreshes in place after an action.
+# The workflow keyword, prepended to every re-search.
+KEYWORD="docker"
+
+# Reopen Alfred on this workflow's keyword plus a suffix, so the list refreshes
+# in place after an action.
 alfred_search() {
-  local text="$1"
-  osascript - "$text" <<'APPLESCRIPT'
+  local suffix="$1"
+  osascript - "$KEYWORD $suffix" <<'APPLESCRIPT'
 on run argv
   tell application id "com.runningwithcrayons.Alfred" to search (item 1 of argv)
 end run
@@ -199,27 +203,27 @@ if [[ "$mode" == "run" ]]; then
   payload="${query#"$action"}"
   payload="${payload# }"
   case "$action" in
-    menu)      alfred_search "docker @$payload " ;;
+    menu)      alfred_search "@$payload " ;;
     shell)     run_iterm_cmd "$(shell_command "$payload")" "docker-shell-$payload" ;;
     logs)      run_iterm_cmd "$(logs_command "$payload")" "docker-logs-$payload" ;;
-    restart)   docker_action restart "$payload"; alfred_search "docker " ;;
-    stop)      docker_action stop "$payload"; alfred_search "docker " ;;
-    start)     docker_action start "$payload"; alfred_search "docker " ;;
-    remove)    docker_action remove "$payload"; alfred_search "docker " ;;
+    restart)   docker_action restart "$payload"; alfred_search "" ;;
+    stop)      docker_action stop "$payload"; alfred_search "" ;;
+    start)     docker_action start "$payload"; alfred_search "" ;;
+    remove)    docker_action remove "$payload"; alfred_search "" ;;
     inspect)   inspect_container "$payload" ;;
     open-port) open "http://localhost:$payload" ;;
-    view-images)     alfred_search "docker images " ;;
-    view-containers) alfred_search "docker " ;;
-    img-menu)     alfred_search "docker #$payload " ;;
+    view-images)     alfred_search "images " ;;
+    view-containers) alfred_search "" ;;
+    img-menu)     alfred_search "#$payload " ;;
     img-run)      run_iterm_cmd "$(docker_bin) run --rm -it $payload" "" ;;
     img-pull)     run_iterm_cmd "$(docker_bin) pull $payload" "docker-pull-$payload" ;;
     img-inspect)  inspect_image "$payload" ;;
-    img-remove)   image_remove "$payload"; alfred_search "docker images " ;;
+    img-remove)   image_remove "$payload"; alfred_search "images " ;;
     img-copy-ref) printf '%s' "$payload" | pbcopy ;;
     img-copy-id)  printf '%s' "$payload" | pbcopy ;;
-    prune-containers) docker_prune containers; alfred_search "docker >" ;;
-    prune-images)     docker_prune images; alfred_search "docker >" ;;
-    prune-system)     docker_prune system; alfred_search "docker >" ;;
+    prune-containers) docker_prune containers; alfred_search ">" ;;
+    prune-images)     docker_prune images; alfred_search ">" ;;
+    prune-system)     docker_prune system; alfred_search ">" ;;
     set-path)  edit_path ;;
     autoupdate) set_autoupdate "$payload" ;;
     http://*|https://*) autoupdate_clear; [[ -f src/update.sh ]] && . src/update.sh "$query" ;;

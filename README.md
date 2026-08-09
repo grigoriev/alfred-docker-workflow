@@ -7,7 +7,8 @@
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=grigoriev_alfred-docker-workflow&metric=coverage)](https://sonarcloud.io/summary/new_code?id=grigoriev_alfred-docker-workflow)
 
 List your Docker containers in Alfred and act on them: open a shell, tail logs,
-restart, stop, start, inspect, open a published port, or remove.
+restart, stop, start, inspect, open a published port, or remove. Browse images
+too: run, pull, inspect, copy, or remove.
 
 ## Usage
 
@@ -33,6 +34,19 @@ Enter on a container drills into its actions (filter them by typing):
 
 Shell and Logs reuse an iTerm2 session: launching the same one again focuses the
 existing window instead of stacking new ones.
+
+## Images
+
+Type `docker images` (or `img`), or pick **Images →** at the bottom of the
+container list. The list shows `repository:tag`, id, size, and age; dangling
+(`<none>`) images sink to the bottom. **Containers →** at the bottom switches
+back. Type to filter by repository, tag, or id.
+
+- <kbd>Enter</kbd> on an image opens its action menu: **Run** (`docker run --rm
+  -it` in iTerm2), **Pull / update** (in iTerm2), **Copy repo:tag**, **Copy
+  image id**, **Inspect**, **Remove** (`rmi -f`). A dangling image has no
+  repo:tag, so it offers Run (by id), Copy id, Inspect, and Remove.
+- <kbd>⌘</kbd> removes the image; <kbd>⌥</kbd> pulls it.
 
 ## Settings
 

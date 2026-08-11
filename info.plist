@@ -183,7 +183,7 @@
 		<string>grigoriev/alfred-docker-workflow</string>
 	</dict>
 	<key>version</key>
-	<string>0.1.0</string>
+	<string>0.2.0</string>
 	<key>webaddress</key>
 	<string>https://github.com/grigoriev/alfred-docker-workflow</string>
 </dict>

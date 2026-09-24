@@ -88,6 +88,16 @@ make icons   # regenerate PNG icons from Octicons (macOS)
 Bash 3.2 compatible (stock macOS `/bin/bash`). The Script Filter renders with a
 single `jq` pass over `docker ps` JSON.
 
+## Verify
+
+Each release carries `Docker.alfredworkflow.intoto.jsonl`, a signed build
+provenance bundle. Check that this repository's release workflow built the
+download:
+
+```sh
+gh attestation verify Docker.alfredworkflow --repo grigoriev/alfred-docker-workflow
+```
+
 ## Disclaimer
 
 This workflow is provided "as is", without warranty of any kind, as the [LICENSE](LICENSE) states.

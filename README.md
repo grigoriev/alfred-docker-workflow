@@ -3,6 +3,7 @@
 ![CI](https://github.com/grigoriev/alfred-docker-workflow/actions/workflows/ci.yml/badge.svg)
 [![Release](https://img.shields.io/github/v/release/grigoriev/alfred-docker-workflow)](https://github.com/grigoriev/alfred-docker-workflow/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/grigoriev/alfred-docker-workflow/badge)](https://scorecard.dev/viewer/?uri=github.com/grigoriev/alfred-docker-workflow)
 [![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=grigoriev_alfred-docker-workflow&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=grigoriev_alfred-docker-workflow)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=grigoriev_alfred-docker-workflow&metric=coverage)](https://sonarcloud.io/summary/new_code?id=grigoriev_alfred-docker-workflow)
 

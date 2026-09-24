@@ -2,6 +2,7 @@
 
 [![CI](https://github.com/grigoriev/alfred-docker-workflow/actions/workflows/ci.yml/badge.svg)](https://github.com/grigoriev/alfred-docker-workflow/actions/workflows/ci.yml)
 [![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/grigoriev/alfred-docker-workflow/badge)](https://scorecard.dev/viewer/?uri=github.com/grigoriev/alfred-docker-workflow)
+[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/14790/badge)](https://www.bestpractices.dev/projects/14790)
 [![Release](https://img.shields.io/github/v/release/grigoriev/alfred-docker-workflow)](https://github.com/grigoriev/alfred-docker-workflow/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 

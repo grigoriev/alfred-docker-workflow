@@ -6,12 +6,28 @@
 [![Release](https://img.shields.io/github/v/release/grigoriev/alfred-docker-workflow)](https://github.com/grigoriev/alfred-docker-workflow/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-[![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=grigoriev_alfred-docker-workflow&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=grigoriev_alfred-docker-workflow)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=grigoriev_alfred-docker-workflow&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=grigoriev_alfred-docker-workflow)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=grigoriev_alfred-docker-workflow&metric=coverage)](https://sonarcloud.io/summary/new_code?id=grigoriev_alfred-docker-workflow)
 
 List your Docker containers in Alfred and act on them: open a shell, tail logs,
 restart, stop, start, inspect, open a published port, or remove. Browse images
 too: run, pull, inspect, copy, or remove.
+
+## Install
+
+1. Open the [latest release](https://github.com/grigoriev/alfred-docker-workflow/releases/latest).
+2. Under **Assets**, download `Docker.alfredworkflow`.
+3. Double click the file to add it to Alfred.
+
+### Verify
+
+Each release carries `Docker.alfredworkflow.intoto.jsonl`, a signed build
+provenance bundle. Check that this repository's release workflow built the
+download:
+
+```sh
+gh attestation verify Docker.alfredworkflow --repo grigoriev/alfred-docker-workflow
+```
 
 ## Usage
 
@@ -89,15 +105,9 @@ make icons   # regenerate PNG icons from Octicons (macOS)
 Bash 3.2 compatible (stock macOS `/bin/bash`). The Script Filter renders with a
 single `jq` pass over `docker ps` JSON.
 
-## Verify
+## Contributing
 
-Each release carries `Docker.alfredworkflow.intoto.jsonl`, a signed build
-provenance bundle. Check that this repository's release workflow built the
-download:
-
-```sh
-gh attestation verify Docker.alfredworkflow --repo grigoriev/alfred-docker-workflow
-```
+Issues and pull requests are welcome, see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Disclaimer
 
